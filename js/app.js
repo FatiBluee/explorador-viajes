@@ -8,6 +8,7 @@
 ========================================= */
 
 import { obtenerPaises } from "./api/countriesApi.js";
+import { mostrarCargando, mostrarError, renderPaises, actualizarContador } from "./ui/ui.js";
 
 /* =========================================
    ESTADO DE LA APLICACIÓN
@@ -27,105 +28,34 @@ const resultsCount = document.querySelector(
     "#results-count"
 );
 
-const initialMessage = document.querySelector("#initial-message");
 
 /* =========================================
    INICIALIZACIÓN DE LA APLICACIÓN
 ========================================= */
 
 async function init() {
-
     console.log("Explorador de Viajes iniciado");
-
-    resultsCount.textContent = "0 destinos";
-
-    /* =====================================
-        MOSTRAR ESTADO DE CARGA
-    ===================================== */
-    initialMessage.innerHTML = /*html*/`
-    <div class="text-5xl mb-4">
-        🌎
-    </div>
-
-    <h3
-        class="
-            text-xl
-            font-semibold
-            text-slate-800
-            mb-2
-        "
-    >
-        Cargando destinos...
-    </h3>
-
-    <p class="text-slate-500">
-        Estamos consultando información
-        de países alrededor del mundo.
-    </p>
-`;
-
-    /* =====================================
-        OBTENER PAÍSES DESDE LA API
-    ===================================== */
+    //resultsCount.textContent = "0 destinos";
+    //MOSTRAR ESTADO DE CARGA
+    mostrarCargando(destinationsContainer);
+    //OBTENER PAISES DESDE LA API
     paises = await obtenerPaises();
+    //comprobar resultados
     console.log("PAISES OBTENIDOS", paises)
-
-    /* =====================================
-        ACTUALIZAR CONTADOR
-    ===================================== */
-    resultsCount.textContent = `${paises.length} destinos`
-
-    //MOSTRAR RESULTADOS DE LA CARGA 
-    if(paises.length > 0) {
-        initialMessage.innerHTML = /*html*/`
-        <div class="text-5xl mb-4">
-            ✅
-        </div>
-
-        <h3
-            class="
-                text-xl
-                font-semibold
-                text-slate-800
-                mb-2
-            "
-        >
-            Destinos cargados
-        </h3>
-
-        <p class="text-slate-500">
-            Se obtuvieron ${paises.length}
-            destinos correctamente.
-        </p>
-        `
-    } else {
-        initialMessage.innerHTML = /*html*/`
-        <div class="text-5xl mb-4">
-            ⚠️
-        </div>
-
-        <h3
-            class="
-                text-xl
-                font-semibold
-                text-slate-800
-                mb-2
-            "
-        >
-            No fue posible cargar los paises
-        </h3>
-
-        <p class="text-slate-500">
-            Verifica tu conexión e intenta
-            nuevamente.
-        </p>
-        `;
+    //VALIDAR PAISES OBTENIDOS
+    if (paises.length === 0) {
+        mostrarError( destinationsContainer);
+        actualizarContador( 0, resultsCount );
+        return;
     }
+    //RENDERIZAR PAISES EN EL CONTENEDOR
+    renderPaises(paises, destinationsContainer);
+    //ACTUALIZAR CONTADOR DE RESULTADOS
+    actualizarContador(paises.length, resultsCount);
 }
 
 
 /* =========================================
    INICIAR APLICACIÓN
 ========================================= */
-
 init();

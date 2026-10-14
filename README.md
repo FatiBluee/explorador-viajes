@@ -7,7 +7,7 @@ Proyecto integrador desarrollado con JavaScript puro, APIs y librerías para exp
 - HTML5
 - JavaScript ES6+
 - Tailwind CSS
-- APIs REST
+- REST Countries API
 - LocalStorage
 - Leaflet
 - SweetAlert2
@@ -18,7 +18,8 @@ Proyecto integrador desarrollado con JavaScript puro, APIs y librerías para exp
 
 El proyecto permitirá:
 
-- Consultar países desde una API REST.
+- Consultar destinos desde una API REST.
+- Mostrar destinos dinámicamente.
 - Buscar destinos.
 - Filtrar destinos por continente.
 - Ordenar resultados.
@@ -27,10 +28,36 @@ El proyecto permitirá:
 - Guardar destinos favoritos.
 - Persistir favoritos mediante LocalStorage.
 
+## countriesApi.js
+
+fetch()
+async / await
+try / catch
+response.ok
+response.json()
+import / export
+
+## ui.js
+
+map()
+template literals
+innerHTML
+optional chaining
+data-*
+DOM dinámico
+módulos JavaScript
+separación de responsabilidades
+
 ## Arquitectura
 
 La aplicación utiliza una sola página HTML y divide progresivamente la lógica JavaScript en módulos según su responsabilidad.
 
+Actualmente la aplicación separa:
+
+- Comunicación con APIs.
+- Coordinación principal.
+- Renderizado de la interfaz.
+
 ## Versión actual
 
-v0.1.0 - Estructura inicial, Tailwind CSS y configuración del proyecto.
+v0.3.0 - Renderizado dinámico de destinos obtenidos desde REST Countries.
