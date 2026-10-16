@@ -39,6 +39,52 @@ Actualmente la aplicación separa:
 - Renderizado de la interfaz.
 - Búsqueda, filtrado y ordenamiento de información.
 
+## countriesAPI.js
+- fetch()
+- async / await
+- try / catch
+- response.ok
+- response.json()
+- import / export
+
+##  ui.js
+- map()
+- template literals
+- innerHTML
+- optional chaining
+- data-*
+- DOM dinámico
+- módulos JavaScript
+- separación de responsabilidades
+
+## filters.js
+- filter()
+- sort()
+- includes()
+- toLowerCase()
+- localeCompare()
+- spread operator [...]
+- eventos input
+- eventos change
+- estado de la aplicación
+- funciones reutilizables
+
+## leaflet
+- delegación de eventos
+- dataset
+- find()
+- modales
+- DOM dinámico
+- coordenadas
+- Leaflet
+- OpenStreetMap
+- módulos JavaScript
+
+## mapUI
+- Detalle de destinos
+- Leaflet
+- OpenStreetMap
+
 ## Versión actual
 
 v0.4.0 - Búsqueda, filtrado y ordenamiento dinámico de destinos.
